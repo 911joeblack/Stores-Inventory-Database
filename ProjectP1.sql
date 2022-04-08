@@ -65,6 +65,114 @@ create table Cus_Order(
   Foreign key(ODeliveryID) references Delivery(ID)
 );
 
+CREATE TABLE transactions(
+  TcustomerID varchar(255),
+  TransactionID varchar(255)not NULL,
+  Date VArchar(255),
+  Time VArchar(255),
+  
+  primary key(TransactionID),
+  Foreign key(TcustomerID) references customer(CustomerID)
+);
+
+CREATE TABLE item_Summary(
+  ISUPC int(12),
+  IScustomerID varchar(255),
+  ISTransactionID varchar(255),
+  amount_of_item int(255),
+  Price_paid varchar(255),
+
+  Foreign key(ISUPC) references item(UPC),
+  Foreign key(IScustomerID) references customer(CustomerID),
+  Foreign key(ISTransactionID) references transactions(TransactionID)
+);
+
+CREATE TABLE item_location(
+  ILUPC int(12),
+  Aisle varchar(255),
+  Side_of_Aisle varchar(255),
+  Section_Number int(255),
+  shelf_Number varchar(255),
+  number_of_items_from_start varchar(255),
+
+  Foreign key(ILUPC) references item(UPC)
+);
+
+CREATE TABLE Purchase(
+    PUPC int(12),
+    POrder_Date varchar(255),
+
+    Foreign key(PUPC) references item(UPC),
+    Foreign key(POrder_Date) references Cus_Order(Date)
+);
+
+CREATE TABLE item_Identification(
+    IIDUPC int(12),
+    IIDcustomerID varchar(255),
+    IIDTransactionID varchar(255),
+    
+    Foreign key(IIDUPC) references item(UPC),
+    Foreign key(IIDcustomerID) references customer(CustomerID),
+    Foreign key(IIDTransactionID) references transactions(TransactionID)
+);
+
+CREATE TABLE Coupon(
+    ID varchar(255) NOT NULL,
+    Amount_off varchar(255),
+    Required_Puchases varchar(255),
+    CUPC int(12),
+    
+    PRIMARY KEY (ID),
+    Foreign key(CUPC) references item(UPC)
+);
+
+CREATE TABLE contain (
+    CoUPC int(12),
+    CocustomerID varchar(255),
+    CoTransactionID varchar(255),
+    
+    Foreign key(CoUPC) references item(UPC),
+    Foreign key(CocustomerID) references customer(CustomerID),
+    Foreign key(CoTransactionID) references transactions(TransactionID)
+);
+
+CREATE TABLE Determines_Price (
+    DUPC int(12),
+    DcustomerID varchar(255),
+    DTransactionID varchar(255),
+    DCouponID varchar(255),
+    
+    Foreign key(DCouponID) references Coupon(ID),
+    Foreign key(DUPC) references item(UPC),
+    Foreign key(DcustomerID) references customer(CustomerID),
+    Foreign key(DTransactionID) references transactions(TransactionID)
+);
+
+CREATE TABLE Provided_by(
+    UPC int(12),
+    SuppliersID varchar(255),
+    
+    Foreign key(UPC) references item(UPC),
+    Foreign key(SuppliersID) references Suppliers(ID)
+);
+
+CREATE TABLE Products_Bought(
+    PBUPC int(12),
+    PBcustomerID varchar(255),
+    Amount varchar(255),
+    
+    Foreign key(PBUPC) references item(UPC),
+    Foreign key(PBcustomerID) references customer(CustomerID)
+);
+
+CREATE TABLE Download(
+    DocustomerID varchar(255),
+    DoCouponID varchar(255),
+    Amount varchar(255),
+    
+    Foreign key(DoCouponID) references Coupon(ID),
+    Foreign key(DocustomerID) references customer(CustomerID)
+);
 
 insert into item_expiration VALUES (123456789012,'12/21/2021'),(123456789012,'12/25/2021');
 INSERT into Department Values('N1','SV1','S1'),('N2','SV2','S2'),('N3','SV2','S3');
