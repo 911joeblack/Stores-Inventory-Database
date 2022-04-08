@@ -1,7 +1,18 @@
 # Stores-Inventory-Database
-Team:                   &Email:
+The Team
 
-Joel Perez              jperez4475@gmail.com
+Joel Perez 
 
-xu zhihui               XuZhiHui@csu.fullerton.edu
-Kyle Nguyen             Hnguyen1193@csu.fullerton.edu
+Email: jperez4475@gmail.com
+
+Contributions: Entity Relationship Diagram, Relational Database Design, Code Review
+
+Xu Zhihui
+
+Email: XuZhiHui@csu.fullerton.edu
+
+Contributions: SQL Create Table statements, Insert statemtents, Select statements
+
+Kyle Nguyen 
+
+Email: Hnguyen1193@csu.fullerton.edu
