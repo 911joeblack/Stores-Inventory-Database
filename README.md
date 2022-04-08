@@ -1,7 +1,5 @@
 # Stores-Inventory-Database
-Link to the diagram
-[https://drive.google.com/file/d/1ZsY_uLyTnUhWPBZry-1jeB_NmwDYRyh1/view?usp=sharing
-](url)
+[Link to the diagram](https://drive.google.com/file/d/1ZsY_uLyTnUhWPBZry-1jeB_NmwDYRyh1/view?usp=sharing)
 
 The Team
 
