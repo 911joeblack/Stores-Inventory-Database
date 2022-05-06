@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+  	background: linear-gradient(90deg, #C7C5F4, #776BCC);
+  }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+h1{
+  font-size:300%;
+}
+.center {
+display: flex;
+height: 350px;
+align-items: center;
+}
+.center a{
+  border: 5px solid black;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="index.html">Welcome</a></li>
+  <li><a href="C/addItem.php">add new item</a></li>
+  <li><a href="C/queryDates.php">Query on date</a></li>
+  <li><a href="C/queryOrder.php">Query order</a></li>
+  <li><a href="C/buyItem.php">buy item</a></li>
+  <li><a href="C/queryCustomers.php">customer info</a></li>
+  <li><a href="C/queryDelivery.php">delivery info</a></li>
+  <li style="float:right"><a href="C/createOrderPrivate.php">create order</a></li>
+</ul>
+
+<div style="float:right">
+  <h1 style="color:#333;">Weclome To Our Database</h1>
+  <p>Please navigate to one of the following links to modify or access the database.</p><br>
+</div>
+
+<p style="display: flex; height: 200px;"></p>
+
+<div class="center">
+		<a href='C/addItem.php'>Add new items to the database.</a> <br>
+		<a href='C/queryDates.php'>Query the database based on a given date.</a><br>
+		<a href='C/queryOrder.php'>Query an order from the database.</a><br>
+		<a href='C/buyItem.php'>Buy items from the database.</a><br> <!-- Apply coupon -->
+		<a href='C/queryCustomers.php'>Look up a customer information.</a><br>
+		<a href='C/queryDelivery.php'>Look up a delivery information.</a><br>
+		<a href='C/createOrderPrivate.php'>Create an order from the database.Only accessible by employee.</a><br>
+</div>
+
+</body>
+</html>
