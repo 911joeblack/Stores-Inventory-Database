@@ -44,8 +44,8 @@
     <body>
 
 			<ul>
-			  <li><a href="../index.html">Welcome</a></li>
-			  <li><a class="active" href="addItem.php">add new item</a></li>
+			  <li><a href="../index.php">Welcome</a></li>
+			  <li><a href="addItem.php">add new item</a></li>
 			  <li><a href="queryDates.php">Query on date</a></li>
 			  <li><a href="queryOrder.php">Query order</a></li>
 			  <li><a href="buyItem.php">buy item</a></li>
@@ -82,11 +82,13 @@
 				</div>
 				<div>
 					<label for="department">Department:</label>
-					<select class="form-input" id="department" name="department">
-						<option value='Fashion'>Fashion</option><option value='Housing'>Housing</option><option value='Nutrition'>Nutrition</option>					</select>
+					<select class="form-input" id="department" name="department" required>
+						<option value='Grocery'>Grocery</option><option value='Decor'>Decor</option><option value='Electronics'>Electronics</option>
+            <option value='Clothing'>Clothing </option>				
+          </select>
 				</div>
 				<div>
-					<input class="form-input" type="submit"/>
+					<input class="form-input" type="submit" onclick="window.location.reload(true)"/>
 				</div>
 			</form>
 		</div>
@@ -102,23 +104,41 @@
       <th>Stock_Amount</th>
       <th>Department_Name</th>
     </tr></thead>
-    <tbody><tr><td>123456789012</td>
-      <td>2</td><td>3</td><td>5</td><td>50000</td><td>9983</td>
-      <td>Nutrition</td></tr>
-      <tr><td>123456789013</td><td>0.5</td>
-        <td>2</td><td>3</td><td>25000</td>
-        <td>17399</td><td>Nutrition</td></tr>
-        <tr><td>123456789014</td><td>10</td>
-          <td>15</td><td>40</td><td>45000</td>
-          <td>0</td><td>Fashion</td></tr><tr><td>123456789015</td>
-            <td>500</td><td>450</td><td>700</td><td>500</td>
-            <td>100</td><td>Housing</td></tr>
-            <tr><td>123456789016</td><td>200</td>
-              <td>150</td><td>250</td><td>10000</td>
-              <td>2500</td><td>Housing</td></tr>
-              <tr><td>123456789017</td><td>100</td><td>110</td>
-                <td>120</td><td>7000</td><td>4969</td><td>Fashion</td></tr>
-                <tr><td>123456789018</td><td>50</td><td>60</td><td>70</td>
-                  <td>100000</td><td>3499</td><td>Nutrition</td></tr></tbody>
+    <tbody>
+      <?php 
+        $servername = mariadb;
+        $username = "cs332u23";
+        $password = "zg9TQiFr";
+        $dbname = $username;
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        
+        $sql = "INSERT INTO `Item`(`UPC`, `Restock_Amount`, `Price`,
+          `Interim_Price`, `Current_Stock`, `Department_Name`, `Wholesale`) VALUES ('"
+          . $_POST["upc"] . "'," . $_POST["restock_amount"] . "," . $_POST["price"]
+          . "," . $_POST["interim_price"] . "," . $_POST["stock_amount"]
+          . ",'" . $_POST["department"] . "'," . $_POST["wholesale_price"] . ")";
+         echo "<br> Query ran" . $sql;
+          mysqli_query($conn, $sql);
+
+        $sql = "SELECT * FROM Item";
+        $result = mysqli_query($conn, $sql);
+        if($result)
+        {
+          while($row = mysqli_fetch_assoc($result))
+          {
+            echo "<tr><td>"
+            . $row["UPC"] . "</td>"
+            . "<td>" . $row["Price"] ."</td>"
+            . "<td>" . $row["Interim_Price"] ."</td>"
+            . "<td>" . $row["Restock_Amount"] ."</td>"
+            . "<td>" . $row["Current_Stock"] ."</td>"
+            . "<td>" . $row["Department_Name"] ."</td>"
+            . "<td>" . $row["Wholesale"] ."</td>"
+            . "</tr>";
+          }
+        }
+      ?>
+          </tbody>
       </table>
+
   </body>
