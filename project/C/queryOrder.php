@@ -42,7 +42,7 @@
     </style>
     </head>
     <body>
-
+    <?php require 'connect.php';?>
       <ul>
         <li><a href="../index.html">Welcome</a></li>
         <li><a href="addItem.php">add new item</a></li>
@@ -60,14 +60,60 @@
 				<div>
 					<label for="department">Department:</label>
 					<select class="form-input" id="department" name="department">
-						<option value='Clothing'>Clothing</option><option value='Decor'>Decor</option>
-            <option value='Electronics'>Electronics</option><option value='Grocery'>Grocery</option>
-          </select>
+                        <option value='Clothing'>Clothing</option><option value='Decor'>Decor</option>
+                        <option value='Electronics'>Electronics</option><option value='Grocery'>Grocery</option>
+        			</select>
 				</div>
 				<div>
 					<input class="form-input" type="submit"/>
 				</div>
 			</form>
+        <table>
+        <thead>
+        <tr>
+          <th>UPC</th>
+          <th>Restock_Amount</th>
+          <th>Current_Stock</th>
+            <th>Department_Name</th>
+            <th>Purchase</th>
+    </tr></thead>
+        <tbody>
+         <?php 
+            if(!$conn)
+            {
+              //echo "connection failed";
+            }
+            else
+            {
+              //echo "connection success <br>";
+            }
+            $sql = "SELECT UPC, Current_Stock, Restock_Amount, Department_Name
+                    FROM Item
+                    WHERE Department_Name = '" . $_POST["department"] . "'";
+            $result = mysqli_query($conn, $sql);
+            
+            if($result)
+            {   
+              //  echo "Query success <br>";
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    $full = $row["Restock_Amount"] - $row["Current_Stock"];
+                    echo "<tr><td>"
+                    . $row["UPC"] . " </td>"
+                    . "<td>" . $row["Restock_Amount"] ." </td>"
+                    . "<td>" . $row["Current_Stock"] ." </td>"
+                    . "<td>" . $row["Department_Name"] ." </td>"
+                    . "<td>" . $full ." </td>"
+                    . "</tr>";
+                }
+            }
+            else
+            {
+               echo "query failed: " . $sql;
+            }
+         ?>
+        </tbody>
+        </table>
 		</div>
 
   </body>

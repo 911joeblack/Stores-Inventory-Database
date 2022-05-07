@@ -106,12 +106,8 @@
     </tr></thead>
     <tbody>
       <?php 
-        $servername = mariadb;
-        $username = "cs332u23";
-        $password = "zg9TQiFr";
-        $dbname = $username;
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        
+        require 'connect.php';
+
         $sql = "INSERT INTO `Item`(`UPC`, `Restock_Amount`, `Price`,
           `Interim_Price`, `Current_Stock`, `Department_Name`, `Wholesale`) VALUES ('"
           . $_POST["upc"] . "'," . $_POST["restock_amount"] . "," . $_POST["price"]
