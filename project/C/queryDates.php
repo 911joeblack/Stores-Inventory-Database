@@ -64,9 +64,10 @@
         <li><a href="queryCustomers.php">customer info</a></li>
         <li><a href="queryDelivery.php">delivery info</a></li>
         <li style="float:right"><a href="createOrderPrivate.php">create order</a></li>
+        <li style="float:right"><a href="Coupon.php">Coupon</a></li>
       </ul>
 
-		<div id="form-wrap">
+		<div id="form-wrap" style="position: relative; top:100px">
 			<form method = "post" action= "queryDates.php">
 				<!-- Dropdown list of available Department -->
 				<div>

@@ -52,8 +52,9 @@
 			  <li><a href="queryCustomers.php">customer info</a></li>
 			  <li><a href="queryDelivery.php">delivery info</a></li>
 			  <li style="float:right"><a href="C/createOrderPrivate.php">create order</a></li>
-			</ul>
-		<div id="form-wrap">
+        <li style="float:right"><a href="Coupon.php">Coupon</a></li>
+      </ul>
+		<div id="form-wrap" >
 			<form method = "post" action= "addItem.php">
 				<div>
 					<label for="upc">UPC:</label>
@@ -120,3 +121,4 @@
                 <tr><td>123456789018</td><td>50</td><td>60</td><td>70</td>
                   <td>100000</td><td>3499</td><td>Nutrition</td></tr></tbody>
       </table>
+  </body>

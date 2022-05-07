@@ -52,9 +52,12 @@
         <li><a href="queryCustomers.php">customer info</a></li>
         <li><a class="active" href="queryDelivery.php">delivery info</a></li>
         <li style="float:right"><a href="createOrderPrivate.php">create order</a></li>
+        <li style="float:right"><a href="Coupon.php">Coupon</a></li>
       </ul>
+
+    <div style="position: relative; top:100px">
 		<div id="form-wrap">
-			<form method = "post" action= "/~cs332u14/queryDelivery.php">
+			<form method = "post" action= "queryDelivery.php">
 				<div>
 					<label for="Delivery_ID">Delivery ID:</label>
 					<input class="form-input" type="text" name="upc" id="upc" placeholder="" required/>
@@ -66,4 +69,5 @@
 		</div>
 
 		<table><thead><tr><th>Delivery_ID</th><th>Item_UPC</th><th>Amount</th><th>Date</th></tr></thead><tbody><tr><td>fdb7daa3-d35b-4803-82f2-cba3afea3d96</td><td>123456789012</td><td>10</td><td>2021-05-13</td></tr><tr><td>134fb927-97ee-4e25-bb34-ec79c9f09389</td><td>123456789015</td><td>2</td><td>2021-06-28</td></tr></tbody></table>
+  </div>
   </body>

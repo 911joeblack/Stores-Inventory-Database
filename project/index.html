@@ -1,53 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-  body {
-  	background: linear-gradient(90deg, #C7C5F4, #776BCC);
-  }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #04AA6D;
-}
-h1{
-  font-size:300%;
-}
-.center {
-display: flex;
-height: 350px;
-align-items: center;
-}
-.center a{
-  border: 5px solid black;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-<ul>
+<!-- <ul>
   <li><a class="active" href="index.html">Welcome</a></li>
   <li><a href="C/addItem.php">add new item</a></li>
   <li><a href="C/queryDates.php">Query on date</a></li>
@@ -61,18 +19,67 @@ align-items: center;
 <div style="float:right">
   <h1 style="color:#333;">Weclome To Our Database</h1>
   <p>Please navigate to one of the following links to modify or access the database.</p><br>
+</div> -->
+
+<div class="container">
+  <h3>Welcome to Our Database</h3>
+  <div class="list" onclick="window.location.href='C/addItem.php'">
+      <div class="rank"><span>1</span></div>
+      <div class="creator">
+          <h4>add new item</h4>
+          <p>Add new items to the database.</p>
+      </div>
+  </div>
+  
+  <div class="list"onclick="window.location.href='C/queryDates.php'">
+      <div class="rank"><span>2</span></div>
+      <div class="creator">
+          <h4>Query on date</h4>
+          <p>Query db based on given date.</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/queryOrder.php'">
+      <div class="rank"><span>3</span></div>
+      <div class="creator">
+          <h4>Query order</h4>
+          <p>Query an order from db</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/buyItem.php'">
+      <div class="rank"><span>4</span></div>
+      <div class="creator">
+          <h4>buy item</h4>
+          <p>Buy items from db</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/queryCustomers.php'">
+      <div class="rank"><span>5</span></div>
+      <div class="creator">
+          <h4>customer info</h4>
+          <p>Look up a customer information</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/queryDelivery.php'">
+      <div class="rank"><span>6</span></div>
+      <div class="creator">
+          <h4>delivery info</h4>
+          <p>Look up a delivery information</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/createOrderPrivate.php'">
+      <div class="rank"><span>7</span></div>
+      <div class="creator">
+          <h4>create order</h4>
+          <p>get order Only by employee</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/Coupon.php'">
+    <div class="rank"><span>8</span></div>
+    <div class="creator">
+        <h4>Coupon</h4>
+        <p>check Coupon from db</p>
+    </div>
 </div>
-
-<p style="display: flex; height: 200px;"></p>
-
-<div class="center">
-		<a href='C/addItem.php'>Add new items to the database.</a> <br>
-		<a href='C/queryDates.php'>Query the database based on a given date.</a><br>
-		<a href='C/queryOrder.php'>Query an order from the database.</a><br>
-		<a href='C/buyItem.php'>Buy items from the database.</a><br> <!-- Apply coupon -->
-		<a href='C/queryCustomers.php'>Look up a customer information.</a><br>
-		<a href='C/queryDelivery.php'>Look up a delivery information.</a><br>
-		<a href='C/createOrderPrivate.php'>Create an order from the database.Only accessible by employee.</a><br>
 </div>
 
 </body>
