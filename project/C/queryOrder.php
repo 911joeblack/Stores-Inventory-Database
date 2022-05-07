@@ -60,7 +60,9 @@
 				<div>
 					<label for="department">Department:</label>
 					<select class="form-input" id="department" name="department">
-						<option value='Fashion'>Fashion</option><option value='Housing'>Housing</option><option value='Nutrition'>Nutrition</option>					</select>
+						<option value='Clothing'>Clothing</option><option value='Decor'>Decor</option>
+            <option value='Electronics'>Electronics</option><option value='Grocery'>Grocery</option>
+          </select>
 				</div>
 				<div>
 					<input class="form-input" type="submit"/>

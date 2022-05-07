@@ -131,9 +131,9 @@
             . "<td>" . $row["Price"] ."</td>"
             . "<td>" . $row["Interim_Price"] ."</td>"
             . "<td>" . $row["Restock_Amount"] ."</td>"
+            . "<td>" . $row["Wholesale_Price"] ."</td>"
             . "<td>" . $row["Current_Stock"] ."</td>"
             . "<td>" . $row["Department_Name"] ."</td>"
-            . "<td>" . $row["Wholesale"] ."</td>"
             . "</tr>";
           }
         }
