@@ -7,7 +7,7 @@
 		<title>Buy Item</title>
 
 		<!-- Include index.css -->
-		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" href="style.css"/>
 		<script>
 			function submitCheck () {
 				setCookie(
@@ -87,26 +87,26 @@
 			<form method = "post" action= "buyItem.php">
 				<div>
 					<label for="customer">Customer ID:</label>
-					<select class="form-input" id="customer" name="customer">
+					<select class="form-input" style="width:200px"id="customer" name="customer">
 						<option value='1234567890'>1234567890</option><option value='1234567891'>1234567891</option><option value='1234567892'>1234567892</option><option value='1234567893'>1234567893</option><option value='1234567894'>1234567894</option>					</select>
 				</div>
 				<div>
 					<label for="transaction">Transaction ID:</label>
-					<select class="form-input" id="transaction" name="transaction">
+					<select class="form-input" style="width:200px"id="transaction" name="transaction">
 						<option value="00000000-0000-0000-0000-000000000000" selected>New Transaction</option>
 					</select>
 				</div>
 				<div>
 					<label for="upc">Item UPC:</label>
-					<input class="form-input" type="number" name="upc" id="upc" min="100000000000" max="999999999999" step="1" placeholder="000000000000" required/>
+					<input class="form-input" style="width:200px"type="number" name="upc" id="upc" min="100000000000" max="999999999999" step="1" placeholder="000000000000" required/>
 				</div>
 				<div>
 					<label for="amount">Amount:</label>
-					<input class="form-input" type="number" name="amount" id="amount" min="1" step="1" placeholder="1" value="1" required/>
+					<input class="form-input" style="width:200px"type="number" name="amount" id="amount" min="1" step="1" placeholder="1" value="1" required/>
 				</div>
 				<div>
 					<label for="coupon">Coupon:</label>
-					<input class="form-input" type="text" name="coupon" id="coupon" placeholder="00000000-0000-0000-0000-000000000000"/>
+					<input class="form-input" style="width:200px"type="text" name="coupon" id="coupon" placeholder="00000000-0000-0000-0000-000000000000"/>
 				</div>
 				<div>
 					<input class="form-input" type="submit" onclick="submitCheck()"/>

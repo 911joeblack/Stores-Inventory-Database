@@ -7,7 +7,7 @@
 		<title>Query Order 1.0</title>
 
 		<!-- Include index.css -->
-		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet"href="style.css">
     <style>
       body {
         background: linear-gradient(90deg, #C7C5F4, #776BCC);
@@ -42,7 +42,6 @@
     </style>
     </head>
     <body>
-    <?php require 'connect.php';?>
       <ul>
         <li><a href="../index.html">Welcome</a></li>
         <li><a href="addItem.php">add new item</a></li>
@@ -59,7 +58,7 @@
 			<form method = "post" action= "queryOrder.php">
 				<div>
 					<label for="department">Department:</label>
-					<select class="form-input" id="department" name="department">
+					<select class="form-input"style="width:200px" id="department" name="department">
                         <option value='Clothing'>Clothing</option><option value='Decor'>Decor</option>
                         <option value='Electronics'>Electronics</option><option value='Grocery'>Grocery</option>
         			</select>
@@ -79,14 +78,11 @@
     </tr></thead>
         <tbody>
          <?php 
-            if(!$conn)
-            {
-              //echo "connection failed";
-            }
-            else
-            {
-              //echo "connection success <br>";
-            }
+             $servername = mariadb;
+             $username = "cs332u23";
+             $password = "zg9TQiFr";
+             $dbname = $username;
+             $conn = mysqli_connect($servername, $username, $password, $dbname);
             $sql = "SELECT UPC, Current_Stock, Restock_Amount, Department_Name
                     FROM Item
                     WHERE Department_Name = '" . $_POST["department"] . "'";

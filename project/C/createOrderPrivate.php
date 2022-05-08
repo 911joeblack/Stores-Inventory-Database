@@ -7,7 +7,7 @@
 		<title>Add Item 1.1</title>
 
 		<!-- Include index.css -->
-		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" href="style.css">
     <style>
       body {
       	background: linear-gradient(90deg, #C7C5F4, #776BCC);
@@ -51,7 +51,7 @@
 		  <li><a href="buyItem.php">buy item</a></li>
 		  <li><a href="queryCustomers.php">customer info</a></li>
 		  <li><a href="queryDelivery.php">delivery info</a></li>
-		  <li style="float:right"><a class="active" href="C/createOrderPrivate.php">create order</a></li>
+		  <li style="float:right"><a class="active" href="createOrderPrivate.php">create order</a></li>
       <li style="float:right"><a href="Coupon.php">Coupon</a></li>
     </ul>
 		

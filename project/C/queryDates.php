@@ -12,7 +12,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 		<!-- Include index.css -->
-		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" href="style.css">
 		<script>
 			$(function() {
 				$("#datepicker").datepicker({
@@ -72,12 +72,12 @@
 				<!-- Dropdown list of available Department -->
 				<div>
 					<label for="department">Department:</label>
-					<select class="form-input" id="department" name="department">
+					<select class="form-input"style="width:200px" id="department" name="department">
 						<option value='Fashion'>Fashion</option><option value='Housing'>Housing</option><option value='Nutrition'>Nutrition</option>					</select>
 				</div>
 				<div>
 					<label for="datepicker">Date:</label>
-					<input class="form-input" id="datepicker" type="text" name="date" placeholder="Date"/>
+					<input class="form-input" style="width:200px" id="datepicker" type="text" name="date" placeholder="Date"/>
 				</div>
 				<div>
 					<input class="form-input" type="submit"/>

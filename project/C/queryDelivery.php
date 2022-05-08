@@ -7,7 +7,7 @@
 		<title>Delivery</title>
 
 		<!-- Include index.css -->
-		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" href="style.css">
     <style>
       body {
         background: linear-gradient(90deg, #C7C5F4, #776BCC);
@@ -60,7 +60,7 @@
 			<form method = "post" action= "queryDelivery.php">
 				<div>
 					<label for="Delivery_ID">Delivery ID:</label>
-					<input class="form-input" type="text" name="upc" id="upc" placeholder="" required/>
+					<input class="form-input"style="width:200px" type="text" name="upc" id="upc" placeholder="" required/>
 				</div>
 				<div>
 					<input class="form-input" type="submit"/>

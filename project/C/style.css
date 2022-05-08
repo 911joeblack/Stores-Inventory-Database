@@ -1,0 +1,75 @@
+body {
+	font-family: sans-serif;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+#form-wrap {
+	max-width: 550px;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: stretch;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	row-gap: 8px;
+	margin-bottom: 16px;
+}
+form > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: center;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	box-sizing: border-box;
+	border-radius: 20px;
+	padding: 4px;
+	background: #333;
+}
+form > div > label {
+	padding: 0 0 0 0;
+	margin-right: 30px;
+	margin-left: 20px;
+	flex-basis: 55%;
+	color: white;
+}
+.form-input {
+	padding:8px;
+	border:none;
+	border-radius: 20px;
+	border-bottom:1px solid white;
+	width:100%
+}
+.form-input {transition:width 0.4s ease-in-out}
+
+.form-input:focus{width:100%!important}
+
+table {
+	border-collapse: collapse;
+	max-width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+  background: white;
+}
+th, td {
+	text-align: left;
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	border-bottom: 2px solid #ddd;
+	border-top: 2px solid #ddd;
+	margin-left: 0px;
+	margin-right: 8px;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+th {
+	padding: 4px;
+}
+p {
+	text-align: center;
+}

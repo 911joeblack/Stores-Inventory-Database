@@ -4,10 +4,10 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-		<title>Add Item 1.1</title>
+		<title>Add Item</title>
 
 		<!-- Include index.css -->
-		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" href="style.css">
     <style>
       body {
       	background: linear-gradient(90deg, #C7C5F4, #776BCC);

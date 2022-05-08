@@ -7,7 +7,7 @@
 		<title>Query Order 1.0</title>
 
 		<!-- Include index.css -->
-		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" href="style.css">
     <style>
       body {
         background: linear-gradient(90deg, #C7C5F4, #776BCC);
