@@ -9,7 +9,16 @@
 		<!-- Include index.css -->
 		<!-- <link rel="stylesheet" type="text/css" href="index.css"/> -->
     <link rel="stylesheet" href="style.css">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+			$(function() {
+				$("#datepicker").datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+			});
+		</script>
     <style>
       body {
       	background: linear-gradient(90deg, #C7C5F4, #776BCC);
@@ -51,10 +60,9 @@
 			  <li><a href="queryDates.php">Query on date</a></li>
 			  <li><a href="queryOrder.php">Query order</a></li>
 			  <li><a href="buyItem.php">buy item</a></li>
-			  <li><a href="queryCustomers.php">customer info</a></li>
 			  <li><a href="queryDelivery.php">delivery info</a></li>
 			  <li style="float:right"><a href="createOrderPrivate.php">create order</a></li>
-        <li style="float:right"><a href="Coupon.php">Coupon</a></li>
+        <li style="float:right"><a href="Query_Transaction.php">Transaction</a></li>
       </ul>
 		<div id="form-wrap" >
 			<form method = "post" action= "addItem.php">
@@ -81,6 +89,10 @@
 				<div>
 					<label for="stock_amount">Stock Amount:</label>
 					<input class="form-input" style="width:200px"type="number" name="stock_amount" id="stock_amount" min="0" step="1" required/>
+				</div>
+        <div>
+					<label for="datepicker">expiration date:</label>
+					<input class="form-input" style="width:200px" id="datepicker" type="text" name="date"/>
 				</div>
 				<div>
 					<label for="department">Department:</label>

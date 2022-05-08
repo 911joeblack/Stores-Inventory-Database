@@ -48,10 +48,9 @@
         <li><a href="queryDates.php">Query on date</a></li>
         <li><a class="active" href="queryOrder.php">Query order</a></li>
         <li><a href="buyItem.php">buy item</a></li>
-        <li><a href="queryCustomers.php">customer info</a></li>
         <li><a href="queryDelivery.php">delivery info</a></li>
         <li style="float:right"><a href="createOrderPrivate.php">create order</a></li>
-        <li style="float:right"><a href="Coupon.php">Coupon</a></li>
+        <li style="float:right"><a href="Query_Transaction.php">Transaction</a></li>
       </ul>
 
 		<div id="form-wrap" style="position: relative; top:100px">
