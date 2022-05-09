@@ -87,7 +87,7 @@
 
 		<script>
 			function myFunction(){
-				window.open("Query_Transaction.php","transaction","width=900,height=400");
+				window.open("check_tran.php","transaction","width=900,height=400");
 			}
 	</script>
 </body>
