@@ -55,7 +55,7 @@
     </ul>
 
     <div id="form-wrap">
-			<form method = "post" action= "/~cs332u14/createOrderPrivate.php">
+			<form method = "post" action= "createOrderPrivate.php">
 				<div>
 					<label for="employee">Employee ID:</label>
 					<select class="form-input" id="employee" name="employee" placeholder="00000000-0000-0000-0000-000000000000">

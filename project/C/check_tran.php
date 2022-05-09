@@ -16,8 +16,8 @@
     </head>
     <body>
 
-      <div id="form-wrap">
-			<form method = "post" action= "check_tran.php">
+    <div id="form-wrap">
+			<!-- <form method = "post" action= "check_tran.php">
 				<div>
 					<label for="customer">Customer ID:</label>
 					<select class="form-input" id="customer" name="customer">
@@ -26,8 +26,36 @@
                 <div>
 					<input class="form-input" type="submit"/>
 				</div>
-			</form>
+			</form> -->
 		</div>
+    <table>
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Transaction ID</th>
+            <th>Start</th>
+            <th>End</th>
+        </tr></thead>
+    <tbody>
+        <?php
+        require 'connect.php';
+        $sql = "SELECT * FROM `Transaction`";
+        $result = mysqli_query($conn, $sql);
+        if($result)
+        {
+            while($row = mysqli_fetch_assoc($result))
+            {
+                echo "<tr><td>"
+                . $row["Customer_ID"] . "</td>"
+                . "<td>" . $row["Transaction_ID"] ."</td>"
+                . "<td>" . $row["Start"] ."</td>"
+                . "<td>" . $row["Wholesale"] ."</td>"
+                . "<td>" . $row["End"] ."</td>"
+                . "</tr>";
+            }
+        }
+        ?>
+    </tbody>
 
   </body>
 

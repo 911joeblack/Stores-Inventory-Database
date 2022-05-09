@@ -55,35 +55,201 @@
 		<li style="float:right"><a href="Query_Transaction.php">Transaction</a></li>
 	</ul>
 
-		<div id="form-wrap">
+	<div id="form-wrap">
 			<form method = "post" action= "buyItem.php">
 				<div>
 					<label for="customer">Customer ID:</label>
-					<select class="form-input" style="width:200px"id="customer" name="customer">
-						<option value='1234567890'>1234567890</option><option value='1234567891'>1234567891</option><option value='1234567892'>1234567892</option><option value='1234567893'>1234567893</option><option value='1234567894'>1234567894</option>					</select>
-						<button onclick="myFunction()" style="border-radius: 20px;">Check trans</button>
+					<select class="form-input" id="customer" name="customer">
+            <?php
+              require 'connect.php';
+              $sql = "SELECT ID
+                      FROM Customer";
+              echo "Query Ran" . $sql . "<br>";
+              $result = mysqli_query($conn, $sql);
+              
+              while ($row = mysqli_fetch_array($result))
+              {
+			          echo "<option value='" . $row["ID"] . "'>" . $row["ID"] . "</option>";
+              }
+            ?>
+          </select><button onclick="myFunction()" style="border-radius: 20px;">Check trans</button>
 				</div>
 				<div>
-					<label for="transaction">Transaction ID:</label>
-					<input class="form-input" type="number"style="width:200px"id="transaction" name="transaction">
+					<label for="transaction">Transaction ID(empty makes new):</label>
+					<input class="form-input" type="number" id="transaction" value="0" name="transaction" min="0" step="1">
+            </input>
 				</div>
 				<div>
 					<label for="upc">Item UPC:</label>
-					<input class="form-input" style="width:200px"type="number" name="upc" id="upc" min="100000000000" max="999999999999" step="1" placeholder="000000000000" required/>
+					<input class="form-input" type="number" name="upc" id="upc" min="100000000000" max="999999999999" step="1" placeholder="000000000000" required/>
 				</div>
 				<div>
 					<label for="amount">Amount:</label>
-					<input class="form-input" style="width:200px"type="number" name="amount" id="amount" min="1" step="1" placeholder="1" value="1" required/>
+					<input class="form-input" type="number" name="amount" id="amount" min="1" step="1" placeholder="1" value="1" required/>
 				</div>
 				<div>
-					<label for="coupon">Coupon:</label>
-					<input class="form-input" style="width:200px"type="text" name="coupon" id="coupon" placeholder="00000000-0000-0000-0000-000000000000"/>
-				</div>
-				<div>
-					<input class="form-input" type="submit" onclick="submitCheck()"/>
+					<input class="form-input" type="submit" onclick="window.location.reload(true)"/>
 				</div>
 			</form>
 		</div>
+
+		<table>
+            <thead>
+            <tr>
+                <th>UPC</th>
+                <th>Price</th>
+                <th>Interim Price</th>
+                <th>Wholesale Price</th>
+                <th>Stock Amount</th>
+                <th>Restock Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+                // require 'connect.php';
+                //MUST CHECK UPC EXISTS
+                $UPC_Check = "SELECT UPC, Current_Stock, Wholesale
+                              FROM Item
+                              WHERE UPC = '" . $_POST["upc"] . "'";
+                echo "UPC_Check: " . $UPC_Check . "<br>";
+                $UPC_Check_Result = mysqli_query($conn, $UPC_Check);
+                if($UPC_Check_Result == false)
+                {
+                  echo "UPC doesn't exist <br>";
+                }
+                else
+                {
+                  //MUST CHECK IF ENOUGH OF ITEM
+                  $resultStock = mysqli_fetch_assoc($UPC_Check_Result);
+                  if($resultStock["Current_Stock"] >= $_POST["amount"])
+                  {
+                    $newStock = $resultStock["Current_Stock"] - $_POST["amount"];
+                    //IF TRANSACTION ID GIVEN
+                    if($_POST["transaction"] != 0) 
+                    { 
+                      echo "transaction ID given <br>";
+                      $sqlCheck = "SELECT Transaction_ID
+                                  FROM `Transaction`
+                                  WHERE Transaction_ID = " . $_POST["transaction"] . 
+                                  " AND Customer_ID = " . $_POST["customer"];
+                      $Trans_IDConfirm = mysqli_query($conn,$sqlcheck);
+                      if($Trans_IDConfirm == false)
+                      {
+                        echo "Transaction ID does not exist";
+                      }
+                      else
+                      {
+                        $checkUPC = "COUNT(1)
+                                    FROM Item_Summary
+                                    WHERE Transaction_ID = " . $_POST["transaction"] . 
+                                    "AND Customer_ID = " . $_POST["customer"] . 
+                                    "AND UPC = " . $_POST["upc"];
+                        $checkResult = mysqli_query($conn, $checkUPC);
+                        if($checkResult == 0)
+                        {
+                          $sqlSummary = "INSERT INTO Item_Summary(UPC, Customer_ID, Transaction_ID, Amount_Of_Item, Price_Paid)
+                            VALUES ('" . $_POST["upc"] . "','" . $_POST["customer"] . "'," . 
+                                    $_POST["transaction"] . "," . $_POST["amount"] .  "," .
+                                    $resultStock["Wholesale"] . ")";
+                          
+                          echo "Query SQLSummary: " . $sqlSummary . "<br>";
+                          mysqli_query($conn, $sqlSummary);
+                          $sqlUpdate = "UPDATE Item
+                                        SET Current_Stock = " . $newStock . 
+                                        "WHERE UPC = " . $_POST["upc"];
+                          echo "Query Update: " . $sqlUpdate . "<br>";
+                          mysqli_query($conn, $sqlUpdate);
+                          //MODIFY ITEM FOR NEW STOCK
+                        }
+                        else
+                        {
+                          echo "UPC already exists in transaction, to buy more start a new transaction <br>";
+                        }
+                      }
+                    }
+                    else
+                    {
+                      echo "transaction ID not given <br>";
+                      $sqlCheck = "COUNT (1)
+                                   FROM `Transaction`
+                                   WHERE `Transaction`.`Customer_ID` = '" . $_POST["customer"] .
+                                "' ORDER BY Transaction_ID DESC LIMIT 1";
+                      echo "Query: " . $sqlCheck . "<br>";
+                      $result = mysqli_query($conn, $sqlcheck);
+                      $count = mysqli_num_rows($result);
+                      echo $result . "<br>";
+                      $Transaction_ID = 0;
+                      if($count == 0)
+                      {
+
+                        $Transaction_ID = 1;
+                        echo "Transaction_ID 1st: " . $Transaction_ID . "<br>";
+                      }
+                      else
+                      {
+                        $sqlCheck = "SELECT Transaction_ID 
+                        FROM `Transaction`
+                        WHERE `Transaction`.`Customer_ID` = '" . $_POST["customer"] .
+                        "' ORDER BY Transaction_ID DESC LIMIT 1";
+                        echo "Query: " . $sqlCheck . "<br>";
+                        $result = mysqli_query($conn, $sqlcheck);
+                        $obj = mysqli_fetch_assoc($result);
+                        $Transaction_ID = $obj["Transaction_ID"] + 1;
+                        echo "Transaction_ID exists: " . $Transaction_ID . "<br>";
+                      }
+
+                      $date = date('Y-m-d H:i:s');
+                      $sql = "INSERT INTO `Transaction`(`Customer_ID`, `Transaction_ID`, `Start`,
+                        `End`)
+                        VALUES ('"
+                        . $_POST["customer"] . "'," . $Transaction_ID
+                        . ",'" . $date . "',"
+                        . "null)";
+                      echo "Query: " . $sql . "<br>";
+                      mysqli_query($conn, $sql);
+                  
+                      $sqlItemSummary = "INSERT INTO Item_Summary(UPC, Customer_ID, Transaction_ID, Amount_Of_Item,
+                       Price_Paid) VALUES ('" . $_POST["upc"] . "','" . $_POST["customer"] . "'," . 
+                        $Transaction_ID . "," . $_POST["amount"] .  "," .
+                        $resultStock["Wholesale"] . ")";
+                        
+                      echo "Query Item_Summary: " . $sqlItemSummary . "<br>";
+                      mysqli_query($conn, $sqlItemSummary);
+                      $sqlUpdate = "UPDATE Item
+                                    SET Current_Stock = " . $newStock . 
+                                    " WHERE UPC = " . $_POST["upc"];
+                      echo "Query modify Current_Stock: " . $sqlUpdate . "<br>";
+                      mysqli_query($conn, $sqlUpdate);
+                    }
+                      //PLACE HERE
+                      //FOR IF NO TRANSACTION ID GIVEN
+                    
+                  }
+                  else
+                  {
+                    echo "Not enough items in stock!<br>";
+                  }
+                }
+                
+                $sql = "SELECT * FROM Item";
+                $result = mysqli_query($conn, $sql);
+                if($result)
+                {
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        echo "<tr><td>"
+                        . $row["UPC"] . "</td>"
+                        . "<td>" . $row["Price"] ."</td>"
+                        . "<td>" . $row["Interim_Price"] ."</td>"
+                        . "<td>" . $row["Wholesale"] ."</td>"
+                        . "<td>" . $row["Restock_Amount"] ."</td>"
+                        . "<td>" . $row["Current_Stock"] ."</td>"
+                        . "<td>" . $row["Department_Name"] ."</td>"
+                        . "<td>" . $Full ."</td>"
+                        . "</tr>";
+                    }
+                }
+            ?>
 
 		<script>
 			function myFunction(){
