@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<!-- <ul>
+  <li><a class="active" href="index.html">Welcome</a></li>
+  <li><a href="C/addItem.php">add new item</a></li>
+  <li><a href="C/queryDates.php">Query on date</a></li>
+  <li><a href="C/queryOrder.php">Query order</a></li>
+  <li><a href="C/buyItem.php">buy item</a></li>
+  <li><a href="C/queryCustomers.php">customer info</a></li>
+  <li><a href="C/queryDelivery.php">delivery info</a></li>
+  <li style="float:right"><a href="C/createOrderPrivate.php">create order</a></li>
+</ul>
+
+<div style="float:right">
+  <h1 style="color:#333;">Weclome To Our Database</h1>
+  <p>Please navigate to one of the following links to modify or access the database.</p><br>
+</div> -->
+
+<div class="container">
+  <h3>Welcome to Our Database</h3>
+  <div class="list" onclick="window.location.href='C/addItem.php'">
+      <div class="rank"><span>1</span></div>
+      <div class="creator">
+          <h4>add new item</h4>
+          <p>Add new items to the database.</p>
+      </div>
+  </div>
+  
+  <div class="list"onclick="window.location.href='C/queryDates.php'">
+      <div class="rank"><span>2</span></div>
+      <div class="creator">
+          <h4>Query on date</h4>
+          <p>Query db based on given date.</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/queryOrder.php'">
+      <div class="rank"><span>3</span></div>
+      <div class="creator">
+          <h4>Query order</h4>
+          <p>Query an order from db</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/buyItem.php'">
+      <div class="rank"><span>4</span></div>
+      <div class="creator">
+          <h4>buy item</h4>
+          <p>Buy items from db</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/queryDelivery.php'">
+      <div class="rank"><span>6</span></div>
+      <div class="creator">
+          <h4>delivery info</h4>
+          <p>Look up a delivery information</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/createOrderPrivate.php'">
+      <div class="rank"><span>7</span></div>
+      <div class="creator">
+          <h4>create order</h4>
+          <p>get order Only by employee</p>
+      </div>
+  </div>
+  <div class="list"onclick="window.location.href='C/queryTransaction.php'">
+    <div class="rank"><span>8</span></div>
+    <div class="creator">
+        <h4>Transaction</h4>
+        <p>Query Transaction from db</p>
+    </div>
+</div>
+<p style="color:white;">by Joel Perez & Zhihui Xu</p>
+</div>
+
+</body>
+</html>
